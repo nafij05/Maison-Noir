@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maison Noir — Fine Dining</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="images/Icon.png"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">MAISON NOIR</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Reservations</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+    </ul>
+    <a href="contact.html" class="nav-reserve">Reserve a Table</a>
+
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-line-left"></div>
+    <div class="hero-line-right"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Est. 2009 · Paris-Inspired Fine Dining</p>
+      <h1 class="hero-title">
+        French tradition<br>
+        <em>met by</em><br>
+        modern vision.
+      </h1>
+      <p class="hero-sub">Contemporary French cuisine — crafted with obsession</p>
+      <div class="hero-cta">
+        <a href="menu.html" class="btn-primary">Explore Menu</a>
+        <a href="contact.html" class="btn-ghost">Book a Table</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="section-about reveal">
+    <div class="about-text-col">
+      <p class="about-label">Our Philosophy</p>
+      <h2 class="about-heading">Food as <em>Art,</em><br>Dining as Theatre</h2>
+      <p class="about-text">At Maison Noir, we believe a meal is more than sustenance — it is a narrative. Each plate carries the story of its origin, the intention of its creator, and the memory it will leave behind.</p>
+      <p class="about-text">Our kitchen is guided by Chef Élise Moreau, a Michelin-starred visionary who trained in Lyon and perfected her craft across Tokyo and New York.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num" id="stat1">0</div>
+          <div class="stat-label">Years of Craft</div>
+        </div>
+        <div>
+          <div class="stat-num" id="stat2">0</div>
+          <div class="stat-label">Michelin Stars</div>
+        </div>
+        <div>
+          <div class="stat-num" id="stat3">0</div>
+          <div class="stat-label">Seasonal Dishes</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img-wrap">
+      <div class="about-img-box">
+         <img src="images\home.jpeg" alt="Restaurant" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;"/>
+      </div>
+      <div class="about-img-accent"></div>
+      <div class="about-img-accent2"></div>
+    </div>
+  </section>
+
+  <!-- FEATURED DISHES -->
+  <section class="section-dishes">
+    <div class="section-header reveal">
+      <p class="section-label">Signature Creations</p>
+      <h2 class="section-title">Featured <em>Dishes</em></h2>
+    </div>
+    <div class="dishes-grid reveal">
+      <div class="dish-card">
+        <div class="dish-bg"></div>
+        <img src="images\Lobster bisque.jpeg" alt="Lobster Bisque" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.6;"/>
+        <div class="dish-border"></div>
+        <div class="dish-overlay">
+          <p class="dish-category">Entrée</p>
+          <h3 class="dish-name">Lobster Bisque</h3>
+          <p class="dish-desc">Normandy lobster, saffron cream, micro herbs, caviar pearl</p>
+          <div class="dish-price">£38</div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-bg" style="background:linear-gradient(160deg,#1a1008,#0a0805)"></div>
+        <img src="images\wagyu tenderloin.jpeg" alt="Wagyu Tenderloin" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.6;"/>
+        <div class="dish-border"></div>
+        <div class="dish-overlay">
+          <p class="dish-category">Main</p>
+          <h3 class="dish-name">Wagyu Tenderloin</h3>
+          <p class="dish-desc">A5 Japanese Wagyu, truffle jus, bone marrow, wild garlic</p>
+          <div class="dish-price">£96</div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-bg" style="background:linear-gradient(160deg,#0f1208,#0a0805)"></div>
+        <img src="images\creme brulee noir.jpeg" alt="Crème Brûlée Noir" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.6;"/>
+        <div class="dish-border"></div>
+        <div class="dish-overlay">
+          <p class="dish-category">Dessert</p>
+          <h3 class="dish-name">Crème Brûlée Noir</h3>
+          <p class="dish-desc">Dark chocolate crème, activated charcoal, gold leaf, bergamot</p>
+          <div class="dish-price">£22</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:60px" class="reveal">
+      <a href="menu.html" class="btn-ghost">View Full Menu</a>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="section-quote reveal">
+    <span class="quote-mark">&ldquo;</span>
+    <p class="quote-text">Maison Noir does not merely serve food — it orchestrates an evening you will carry with you long after the final course.</p>
+    <p class="quote-author">— The Guardian, 2024</p>
+  </section>
+
+  <!-- HOURS -->
+  <div class="hours-band reveal">
+    <div class="hours-item">
+      <p class="hours-day">Tuesday — Thursday</p>
+      <p class="hours-time">6:00 pm — 10:30 pm</p>
+    </div>
+    <div class="hours-item">
+      <p class="hours-day">Friday — Saturday</p>
+      <p class="hours-time">5:30 pm — 11:30 pm</p>
+    </div>
+    <div class="hours-item">
+      <p class="hours-day">Sunday</p>
+      <p class="hours-time">6:00 pm — 10:00 pm</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MAISON NOIR</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQs</a>
+      <a href="reviews.html">Reviews</a>
+    </div>
+    <p class="footer-copy">©️ 2025 Maison Noir. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+    function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) *.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animateRing); }
+    animateRing();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width='6px'; cursor.style.height='6px'; ring.style.width='60px'; ring.style.height='60px'; ring.style.opacity='0.8'; });
+      el.addEventListener('mouseleave', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='40px'; ring.style.height='40px'; ring.style.opacity='0.5'; });
+    });
+
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.15 });
+    reveals.forEach(r => observer.observe(r));
+
+    // Animated counters
+    function animateCount(el, target, duration = 1800) {
+      let start = null;
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        el.textContent = Math.floor(progress * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
+    }
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCount(document.getElementById('stat1'), 15);
+          animateCount(document.getElementById('stat2'), 2);
+          animateCount(document.getElementById('stat3'), 48);
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    statsObserver.observe(document.querySelector('.about-stats'));
+  </script>
+</body>
+</html>

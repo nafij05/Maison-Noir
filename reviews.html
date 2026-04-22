@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maison Noir — Reviews</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="images/Icon.png"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">MAISON NOIR</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Reservations</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+    </ul>
+    <a href="contact.html" class="nav-reserve">Reserve a Table</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="header-line-left"></div>
+    <div class="header-line-right"></div>
+    <div class="page-header-inner">
+      <p class="page-eyebrow">Guest Voices</p>
+      <h1 class="page-title">Leave a <em>Review</em></h1>
+      <p class="page-subtitle">Your experience, in your own words</p>
+    </div>
+    <div class="gold-divider" style="margin-top:32px;"></div>
+  </section>
+
+  <!-- MAIN -->
+  <div class="main-wrap">
+
+    <!-- FORM -->
+    <div class="form-panel">
+      <p class="panel-label">Share Your Evening</p>
+      <h2 class="panel-heading">How was your<br><em>experience?</em></h2>
+      <p class="panel-sub">We value every voice. Your feedback shapes the art we put on every plate.</p>
+
+      <div id="reviewForm">
+        <!-- Name -->
+        <div class="form-group">
+          <label class="form-label" for="guestName">Your Name</label>
+          <input class="form-input" type="text" id="guestName" placeholder="e.g. Charlotte Dubois" autocomplete="off"/>
+        </div>
+
+        <!-- Star Rating -->
+        <div class="star-group">
+          <span class="star-label">Your Rating</span>
+          <div class="stars" id="starRow">
+            <span class="star" data-val="1">★</span>
+            <span class="star" data-val="2">★</span>
+            <span class="star" data-val="3">★</span>
+            <span class="star" data-val="4">★</span>
+            <span class="star" data-val="5">★</span>
+          </div>
+        </div>
+
+        <!-- Visit Type -->
+        <div class="visit-group">
+          <span class="star-label">Occasion</span>
+          <div class="visit-options" id="visitOptions">
+            <div class="visit-option" data-val="Romantic Dinner">Romantic Dinner</div>
+            <div class="visit-option" data-val="Business">Business</div>
+            <div class="visit-option" data-val="Anniversary">Anniversary</div>
+            <div class="visit-option" data-val="Celebration">Celebration</div>
+            <div class="visit-option" data-val="Solo">Solo</div>
+          </div>
+        </div>
+
+        <!-- Review -->
+        <div class="form-group">
+          <label class="form-label" for="reviewText">Your Review</label>
+          <textarea class="form-textarea" id="reviewText" placeholder="Describe your evening at Maison Noir…"></textarea>
+        </div>
+
+        <button class="btn-submit" id="submitBtn">Submit Review</button>
+      </div>
+
+      <!-- Success -->
+      <div class="success-msg" id="successMsg">
+        <p>Merci beaucoup.</p>
+        <span>Your review has been received with gratitude.</span>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="reviews-panel">
+      <div class="reviews-header">
+        <div>
+          <h3 class="reviews-heading">Guest <em>Voices</em></h3>
+        </div>
+        <p class="reviews-count" id="reviewsCount">0 reviews</p>
+      </div>
+
+      <!-- Overall Rating Bar -->
+      <div class="overall-rating" id="overallRating" style="display:none;">
+        <div class="overall-num" id="overallNum">—</div>
+        <div>
+          <div class="overall-stars" id="overallStars"></div>
+          <div class="overall-label">Average Rating</div>
+        </div>
+      </div>
+
+      <!-- Reviews List -->
+      <div class="reviews-list" id="reviewsList">
+        <div class="empty-state" id="emptyState">
+          <div class="ornament">✦</div>
+          <p>Be the first to share your evening.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MAISON NOIR</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQs</a>
+      <a href="reviews.html">Reviews</a>
+    </div>
+    <p class="footer-copy">©️ 2025 Maison Noir. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+    // ---- STAR RATING ----
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', () => {
+        const val = +star.dataset.val;
+        stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= val));
+      });
+      star.addEventListener('mouseleave', () => {
+        stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= selectedRating));
+      });
+      star.addEventListener('click', () => {
+        selectedRating = +star.dataset.val;
+        stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= selectedRating));
+      });
+    });
+
+    // ---- VISIT TYPE ----
+    let selectedOccasion = '';
+    document.querySelectorAll('.visit-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.visit-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        selectedOccasion = opt.dataset.val;
+      });
+    });
+
+    // ---- REVIEWS DATA ----
+    let reviews = JSON.parse(localStorage.getItem('maisonNoirReviews') || '[]');
+
+    function saveReviews() {
+      localStorage.setItem('maisonNoirReviews', JSON.stringify(reviews));
+    }
+
+    function starsHTML(n) {
+      return '★'.repeat(n) + '☆'.repeat(5 - n);
+    }
+
+    function formatDate(iso) {
+      return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function updateOverall() {
+      const el = document.getElementById('overallRating');
+      if (reviews.length === 0) { el.style.display = 'none'; return; }
+      el.style.display = 'flex';
+      const avg = reviews.reduce((a, r) => a + r.rating, 0) / reviews.length;
+      document.getElementById('overallNum').textContent = avg.toFixed(1);
+      document.getElementById('overallStars').textContent = starsHTML(Math.round(avg));
+    }
+
+    function renderReviews() {
+      const list = document.getElementById('reviewsList');
+      const empty = document.getElementById('emptyState');
+      const count = document.getElementById('reviewsCount');
+
+      count.textContent = reviews.length === 1 ? '1 review' : `${reviews.length} reviews`;
+
+      if (reviews.length === 0) {
+        list.innerHTML = '';
+        list.appendChild(empty);
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+
+      list.innerHTML = '';
+      // Most recent first
+      [...reviews].reverse().forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = `
+          <div class="review-top">
+            <div class="review-author-block">
+              <div class="review-name">${escapeHTML(r.name)}</div>
+              <div class="review-meta">
+                <span>${formatDate(r.date)}</span>
+                ${r.occasion ? `· ${escapeHTML(r.occasion)}` : ''}
+              </div>
+            </div>
+            <div class="review-stars">${starsHTML(r.rating)}</div>
+          </div>
+          <p class="review-text">${escapeHTML(r.text)}</p>
+          ${r.occasion ? `<span class="review-tag">${escapeHTML(r.occasion)}</span>` : ''}
+        `;
+        list.appendChild(card);
+      });
+
+      updateOverall();
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ---- SUBMIT ----
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      const name = document.getElementById('guestName').value.trim();
+      const text = document.getElementById('reviewText').value.trim();
+
+      if (!name) { flashField('guestName'); return; }
+      if (!selectedRating) { flashStars(); return; }
+      if (!text) { flashField('reviewText'); return; }
+
+      reviews.push({
+        name,
+        rating: selectedRating,
+        occasion: selectedOccasion,
+        text,
+        date: new Date().toISOString()
+      });
+
+      saveReviews();
+      renderReviews();
+
+      // Reset form
+      document.getElementById('guestName').value = '';
+      document.getElementById('reviewText').value = '';
+      selectedRating = 0;
+      selectedOccasion = '';
+      stars.forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.visit-option').forEach(o => o.classList.remove('selected'));
+
+      document.getElementById('successMsg').classList.add('show');
+      setTimeout(() => document.getElementById('successMsg').classList.remove('show'), 3500);
+    });
+
+    function flashField(id) {
+      const el = document.getElementById(id);
+      el.style.borderBottomColor = '#c0392b';
+      el.focus();
+      setTimeout(() => el.style.borderBottomColor = '', 1200);
+    }
+    function flashStars() {
+      const row = document.getElementById('starRow');
+      row.style.filter = 'drop-shadow(0 0 6px rgba(192,57,43,0.8))';
+      setTimeout(() => row.style.filter = '', 1200);
+    }
+
+    // Initial render
+    renderReviews();
+    const cursor = document.querySelector('.cursor');
+    const ring = document.querySelector('.cursor-ring');
+
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      cursor.style.left = x + 'px';
+      cursor.style.top = y + 'px';
+
+      ring.style.left = x + 'px';
+      ring.style.top = y + 'px';
+    });
+  </script>
+
+</body>
+</html>

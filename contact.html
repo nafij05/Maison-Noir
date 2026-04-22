@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservations — Maison Noir</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="images/Icon.png"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">MAISON NOIR</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Reservations</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+    </ul>
+    <a href="contact.html" class="nav-reserve">Reserve a Table</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <p class="c-label">Join Us</p>
+    <h1 class="c-title">Make a <em>Reservation</em></h1>
+    <p class="c-sub">We look forward to welcoming you</p>
+  </section>
+
+  <!-- MAIN CONTACT GRID -->
+  <div class="contact-main reveal">
+
+    <!-- INFO -->
+    <div class="info-panel">
+      <div class="info-section">
+        <p class="info-label">Location</p>
+        <h3 class="info-heading">Find Us</h3>
+        <p class="info-text">12 Berkeley Square<br>Mayfair, London<br>W1J 6EL</p>
+        <p class="info-text" style="margin-top:12px">
+          <a href="tel:+442071234567" class="info-link">+44 (0)20 7123 4567</a><br>
+          <a href="mailto:reservations@maisonnoir.co.uk" class="info-link">reservations@maisonnoir.co.uk</a>
+        </p>
+      </div>
+
+      <div class="info-section">
+        <p class="info-label">Opening Hours</p>
+        <ul class="hours-list">
+          <li><span class="day">Monday</span><span class="closed">Closed</span></li>
+          <li><span class="day">Tuesday – Thursday</span><span class="time">6:00 – 10:30 pm</span></li>
+          <li><span class="day">Friday – Saturday</span><span class="time">5:30 – 11:30 pm</span></li>
+          <li><span class="day">Sunday</span><span class="time">6:00 – 10:00 pm</span></li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <p class="info-label">Dress Code</p>
+        <p class="info-text">Smart casual to formal attire is requested. We ask that guests refrain from sportswear and trainers.</p>
+      </div>
+
+      <div class="info-section">
+        <p class="info-label">Follow Us</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/maison__noir2009?igsh=MXBqdmowMzRlNHJtNQ==" class="social-link instagram" title="Instagram"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61583223484752" class="social-link facebook" title="Facebook"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+          <a href="https://x.com/Maison__Noir" class="social-link x" title="X">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.244 2H21l-6.56 7.5L22 22h-6.828l-5.356-7.03L3.8 22H1l7.02-8.02L2 2h6.828l4.844 6.39L18.244 2z"/>
+  </svg>
+</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-panel">
+      <h2 class="form-title">Reserve Your <em>Table</em></h2>
+      <p class="form-sub">Complete the form below and our reservations team will confirm your booking within 24 hours. For same-day enquiries, please call us directly.</p>
+
+      <div id="bookingForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Jean-Pierre" required/>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Dubois" required/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+44 7700 000000" required/>
+          </div>
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required/>
+          </div>
+          <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <select id="time" required>
+              <option value="" disabled selected>Select a time</option>
+              <option>5:30 PM (Fri–Sat only)</option>
+              <option>6:00 PM</option>
+              <option>6:30 PM</option>
+              <option>7:00 PM</option>
+              <option>7:30 PM</option>
+              <option>8:00 PM</option>
+              <option>8:30 PM</option>
+              <option>9:00 PM</option>
+              <option>9:30 PM</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests" required>
+              <option value="" disabled selected>Select guests</option>
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+              <option>5 Guests</option>
+              <option>6 Guests</option>
+              <option>7–10 Guests (Private Dining)</option>
+              <option>10+ Guests (Private Dining)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="occasion">Special Occasion</label>
+            <select id="occasion">
+              <option value="">None</option>
+              <option>Birthday</option>
+              <option>Anniversary</option>
+              <option>Business Dinner</option>
+              <option>Proposal</option>
+              <option>Other Celebration</option>
+            </select>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <div class="dietary-options">
+            <label>Dietary Requirements</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label"><input type="checkbox"/> Vegetarian</label>
+              <label class="checkbox-label"><input type="checkbox"/> Vegan</label>
+              <label class="checkbox-label"><input type="checkbox"/> Gluten-Free</label>
+              <label class="checkbox-label"><input type="checkbox"/> Nut Allergy</label>
+              <label class="checkbox-label"><input type="checkbox"/> Shellfish Allergy</label>
+              <label class="checkbox-label"><input type="checkbox"/> Dairy-Free</label>
+              <label class="checkbox-label"><input type="checkbox"/> Kosher</label>
+              <label class="checkbox-label"><input type="checkbox"/> Halal</label>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" placeholder="Seating preferences, special requests, or anything else you'd like us to know…"></textarea>
+          </div>
+
+          <p class="form-note">
+            <strong>Cancellation Policy:</strong> We kindly request 48 hours' notice for cancellations. A credit card is required to secure reservations of 4 or more guests.
+          </p>
+
+          <button type="button" class="btn-submit" onclick="submitForm()">Request Reservation</button>
+        </div>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">✦</div>
+        <h3 class="success-title">Reservation <em>Requested</em></h3>
+        <p class="success-text">Thank you. Our reservations team will confirm your table within 24 hours via email. We look forward to welcoming you to Maison Noir.</p>
+      </div>
+    </div>
+
+  </div>
+
+ <!-- MAP -->
+<div class="map-section reveal">
+  <p class="map-label">Getting Here</p>
+
+  <div class="map-box" id="mapBox">
+    <iframe 
+      src="https://www.google.com/maps?q=12+Berkeley+Square,+Mayfair,+London+W1J+6EL&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <p class="map-info">
+    Nearest Underground: Green Park (Jubilee / Victoria / Piccadilly lines) · 3 min walk<br>
+    Parking: NCP Mayfair, Grosvenor Square · Valet available Thursday–Saturday
+  </p>
+</div>
+
+<!-- JS -->
+<script id="3w6c9p">
+  const mapBox = document.getElementById("mapBox");
+
+  mapBox.addEventListener("click", function () {
+    window.open(
+      "https://www.google.com/maps?q=12+Berkeley+Square,+Mayfair,+London+W1J+6EL",
+      "_blank"
+    );
+  });
+</script>
+  <!-- PRIVATE DINING -->
+  <section class="private-section reveal">
+    <p class="private-label">Exclusive Events</p>
+    <h2 class="private-title">Private <em>Dining</em></h2>
+    <p class="private-text">For intimate gatherings, corporate events, and milestone celebrations, Maison Noir offers exclusive use of our private dining spaces. Fully bespoke menus, curated wine flights, and dedicated service.</p>
+    <div class="private-cards">
+      <div class="private-card">
+        <div class="private-card-icon">🕯️</div>
+        <h3 class="private-card-name">The Salon</h3>
+        <p class="private-card-cap">Up to 12 guests</p>
+      </div>
+      <div class="private-card">
+        <div class="private-card-icon">🥂</div>
+        <h3 class="private-card-name">The Wine Room</h3>
+        <p class="private-card-cap">Up to 24 guests</p>
+      </div>
+      <div class="private-card">
+        <div class="private-card-icon">✦</div>
+        <h3 class="private-card-name">Exclusive Buyout</h3>
+        <p class="private-card-cap">Up to 70 guests</p>
+      </div>
+    </div>
+    <a href="mailto:events@maisonnoir.co.uk" class="btn-outline">Enquire About Private Dining</a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">MAISON NOIR</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQs</a>
+      <a href="reviews.html">Reviews</a>
+    </div>
+    <p class="footer-copy">©️ 2025 Maison Noir. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+    function animateRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);}
+    animateRing();
+    document.querySelectorAll('.checkbox-label input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('click', e => e.stopPropagation());
+    });
+
+    // Set min date to today
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth()+1).padStart(2,'0');
+    const dd = String(today.getDate()).padStart(2,'0');
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+    function submitForm() {
+      const fname = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const guests = document.getElementById('guests').value;
+
+      if (!fname || !email || !date || !time || !guests) {
+        // Shake invalid fields
+        [document.getElementById('fname'), document.getElementById('email'), document.getElementById('date'), document.getElementById('time'), document.getElementById('guests')].forEach(el => {
+          if (!el.value.trim()) {
+            el.style.borderColor = 'rgba(255,100,100,0.6)';
+            el.style.animation = 'shake 0.4s ease';
+            setTimeout(() => { el.style.animation = ''; el.style.borderColor = ''; }, 600);
+          }
+        });
+        return;
+      }
+
+      document.getElementById('bookingForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }
+
+    // Add shake animation
+    const style = document.createElement('style');
+    style.textContent = '@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }';
+    document.head.appendChild(style);
+
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+    reveals.forEach(r=>obs.observe(r));
+  </script>
+</body>
+</html>
