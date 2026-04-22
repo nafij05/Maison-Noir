@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Maison Noir</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="images/Icon.png"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0805;
+      --charcoal: #1a1612;
+      --dark: #2a2118;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5efe6;
+      --text-muted: #9a8d7a;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--cream); font-family: 'Lato', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    .cursor { position: fixed; width: 12px; height: 12px; background: var(--gold); border-radius: 0; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
+    .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    background: rgba(201,168,76,0.18);
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0.75;
+    border-radius: 0;
+  }
+
+    nav { position: fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:18px 60px; background:rgba(10,8,5,0.95); backdrop-filter:blur(12px); border-bottom:1px solid rgba(201,168,76,0.15); }
+    .nav-logo { font-family:'Cinzel',serif; font-size:22px; letter-spacing:4px; color:var(--gold); text-decoration:none; }
+    .nav-links { display:flex; gap:48px; list-style:none; }
+    .nav-links a { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--cream); text-decoration:none; opacity:.75; transition:opacity .3s, color .3s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transition:transform .3s; }
+    .nav-links a:hover, .nav-links a.active { opacity:1; color:var(--gold); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
+    .nav-reserve { font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); border:1px solid var(--gold); padding:10px 24px; text-decoration:none; transition:background .3s, color .3s; }
+    .nav-reserve:hover { background:var(--gold); color:var(--black); }
+
+    /* HERO */
+    .about-hero {
+      padding: 160px 60px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.05) 0%, transparent 60%);
+    }
+    .hero-line-v {
+      position: absolute;
+      left: 60px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.2), transparent);
+    }
+    .about-hero-inner { max-width: 800px; position: relative; }
+    .about-hero-label { font-size: 10px; letter-spacing: 6px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+    .about-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7vw, 90px); font-weight: 300; line-height: 1; margin-bottom: 40px; }
+    .about-hero-title em { font-style: italic; color: var(--gold-light); }
+    .about-hero-text { font-size: 18px; line-height: 1.9; color: var(--text-muted); max-width: 560px; }
+
+    /* STORY SECTION */
+    .section-story {
+      padding: 100px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      max-width: 1300px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .story-sticky { position: sticky; top: 120px; }
+    .story-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .story-heading { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; line-height: 1.1; }
+    .story-heading em { font-style: italic; color: var(--gold-light); }
+    .story-divider { width: 60px; height: 1px; background: rgba(201,168,76,0.4); margin: 32px 0; }
+    .story-year { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: rgba(201,168,76,0.12); line-height: 1; }
+
+    .story-blocks { display: flex; flex-direction: column; gap: 60px; }
+    .story-block { border-left: 1px solid rgba(201,168,76,0.15); padding-left: 40px; position: relative; }
+    .story-block::before { content: ''; position: absolute; left: -4px; top: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    .block-year { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 3px; color: var(--gold); margin-bottom: 12px; }
+    .block-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 14px; }
+    .block-text { font-size: 15px; color: var(--text-muted); line-height: 1.9; }
+
+    /* TEAM */
+    .section-team {
+      padding: 100px 60px;
+      background: var(--charcoal);
+      position: relative;
+    }
+    .section-team::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent); }
+    .team-header { text-align: center; margin-bottom: 70px; }
+    .team-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .team-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 4vw, 58px); font-weight: 300; }
+    .team-title em { font-style: italic; color: var(--gold-light); }
+
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+    .team-card {
+      position: relative;
+      padding: 48px 36px;
+      border: 1px solid rgba(201,168,76,0.1);
+      background: var(--dark);
+      transition: border-color .4s, transform .4s;
+      text-align: center;
+    }
+    .team-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-6px); }
+    .team-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.2);
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--charcoal);
+      position: relative;
+
+    }
+      .team-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+    .team-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+    .team-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 6px; }
+    .team-role { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .team-bio { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+    .team-awards { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+    .award-badge { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); color: var(--gold); padding: 4px 12px; }
+
+    /* VALUES */
+    .section-values {
+      padding: 100px 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .values-header { text-align: center; margin-bottom: 70px; }
+    .values-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .values-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 4vw, 58px); font-weight: 300; }
+    .values-title em { font-style: italic; color: var(--gold-light); }
+
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .value-card {
+      padding: 52px 36px;
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+    .value-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .5s ease; }
+    .value-card:hover { background: var(--dark); }
+    .value-card:hover::before { transform: scaleX(1); }
+    .value-icon { font-size: 32px; margin-bottom: 28px; }
+    .value-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 16px; }
+    .value-text { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+
+    /* PRESS */
+    .section-press {
+      padding: 80px 60px;
+      background: var(--dark);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .press-header { text-align: center; margin-bottom: 60px; }
+    .press-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); }
+    .press-logos { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; }
+    .press-item { text-align: center; opacity: 0.4; transition: opacity .3s; }
+    .press-item:hover { opacity: 1; }
+    .press-pub { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--cream); }
+    .press-stars { color: var(--gold); font-size: 14px; margin-top: 4px; }
+
+    /* CTA BAND */
+    .cta-band {
+      padding: 100px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 4vw, 58px); font-weight: 300; margin-bottom: 24px; }
+    .cta-title em { font-style: italic; color: var(--gold-light); }
+    .cta-text { font-size: 15px; color: var(--text-muted); max-width: 500px; margin: 0 auto 40px; line-height: 1.8; }
+    .btn-gold { display: inline-block; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; background: var(--gold); color: var(--black); padding: 16px 48px; text-decoration: none; transition: background .3s; }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 60px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 20px; letter-spacing: 4px; color: var(--gold); }
+    .footer-links { display: flex; gap: 36px; }
+    .footer-links a { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color .3s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 11px; color: var(--text-muted); opacity: .5; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">MAISON NOIR</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Reservations</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+    </ul>
+    <a href="contact.html" class="nav-reserve">Reserve a Table</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="hero-line-v"></div>
+    <div class="about-hero-inner">
+      <p class="about-hero-label">Our Story</p>
+      <h1 class="about-hero-title">Born from <em>Passion,</em><br>Built on Craft</h1>
+      <p class="about-hero-text">Maison Noir began as a dream shared over a late-night dinner in Lyon. Today it is London's most celebrated fine dining destination — built on a single, unwavering belief that food at its finest is a form of art.</p>
+    </div>
+  </section>
+
+  <!-- STORY TIMELINE -->
+  <section class="section-story reveal">
+    <div class="story-sticky">
+      <p class="story-label">Our Journey</p>
+      <h2 class="story-heading">A Decade of <em>Excellence</em></h2>
+      <div class="story-divider"></div>
+      <div class="story-year">2009</div>
+    </div>
+    <div class="story-blocks">
+      <div class="story-block">
+        <p class="block-year">2009</p>
+        <h3 class="block-title">A Dream Takes Shape</h3>
+        <p class="block-text">Chef Élise Moreau returns to London after training under Paul Bocuse in Lyon and a celebrated stint at Joël Robuchon in Tokyo. With her first investor dinner, Maison Noir was born in a 32-seat dining room in Mayfair.</p>
+      </div>
+      <div class="story-block">
+        <p class="block-year">2012</p>
+        <h3 class="block-title">The First Michelin Star</h3>
+        <p class="block-text">Three years after opening, Maison Noir received its first Michelin star — the culmination of relentless dedication to seasonal ingredients, classical French technique, and modern restraint.</p>
+      </div>
+      <div class="story-block">
+        <p class="block-year">2017</p>
+        <h3 class="block-title">The Second Star</h3>
+        <p class="block-text">After introducing the Grand Tasting Menu and expanding our cellar with over 800 wine references, the restaurant earned its second Michelin star, cementing its place among London's finest establishments.</p>
+      </div>
+      <div class="story-block">
+        <p class="block-year">2021</p>
+        <h3 class="block-title">New Chapter</h3>
+        <p class="block-text">Following a year of reflection and reinvention, Maison Noir relaunched with a reimagined space, a commitment to zero-waste cooking, and the introduction of a rotating young chef programme.</p>
+      </div>
+      <div class="story-block">
+        <p class="block-year">Today</p>
+        <h3 class="block-title">The Pursuit Continues</h3>
+        <p class="block-text">We continue to evolve — collaborating with local farmers, foragers, and artisans. Every menu change is a conversation between what the land offers and what our chefs dream of creating.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section-team">
+    <div class="team-header reveal">
+      <p class="team-label">The Creatives</p>
+      <h2 class="team-title">Meet Our <em>Team</em></h2>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-avatar"><img src="images/Élise Moreau.jpeg" alt=""></div>
+        <h3 class="team-name">Élise Moreau</h3>
+        <p class="team-role">Executive Chef & Founder</p>
+        <p class="team-bio">Trained in Lyon, Tokyo, and New York. Élise's cooking bridges classical French tradition with quiet Japanese minimalism. She sources every key ingredient personally.</p>
+        <div class="team-awards">
+          <span class="award-badge">2 Michelin Stars</span>
+          <span class="award-badge">AA 5 Rosettes</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><img src="images/Marcus Webb.jpeg" alt=""></div>
+        <h3 class="team-name">Marcus Webb</h3>
+        <p class="team-role">Head Chef — Kitchen</p>
+        <p class="block-text"></p>
+        <p class="team-bio">Marcus joined Maison Noir in 2014 after a decade across Copenhagen and San Sebastián. His signature is precision — every plate that leaves the pass bears his quiet, demanding eye.</p>
+        <div class="team-awards">
+          <span class="award-badge">Former Noma</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar"><img src="images/Isabelle Cord.jpeg" alt=""></div>
+        <h3 class="team-name">Isabelle Cord</h3>
+        <p class="team-role">Head Sommelier</p>
+        <p class="team-bio">Isabelle holds the title of Master Sommelier and has curated our 900-label cellar over seven years. Her wine pairings are considered by many guests the highlight of the evening.</p>
+        <div class="team-awards">
+          <span class="award-badge">Master Sommelier</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section-values reveal">
+    <div class="values-header">
+      <p class="values-label">What We Stand For</p>
+      <h2 class="values-title">Our <em>Philosophy</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🌿</div>
+        <h3 class="value-name">Provenance</h3>
+        <p class="value-text">Every ingredient has a story. We work directly with farmers and foragers who share our obsession with quality and sustainability.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔥</div>
+        <h3 class="value-name">Craft</h3>
+        <p class="value-text">Classical technique is our foundation. Innovation is our language. We never compromise one for the other.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🕯️</div>
+        <h3 class="value-name">Atmosphere</h3>
+        <p class="value-text">From the light on the table to the silence between courses — every detail of the Maison Noir experience is intentional.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">♻️</div>
+        <h3 class="value-name">Responsibility</h3>
+        <p class="value-text">Zero-waste cooking, ethical sourcing, and a commitment to reducing our environmental footprint drive every kitchen decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="section-press reveal">
+    <div class="press-header">
+      <p class="press-label">As Featured In</p>
+    </div>
+    <div class="press-logos">
+      <div class="press-item"><div class="press-pub">The Guardian</div><div class="press-stars">★★★★★</div></div>
+      <div class="press-item"><div class="press-pub">The Telegraph</div><div class="press-stars">★★★★★</div></div>
+      <div class="press-item"><div class="press-pub">Financial Times</div><div class="press-stars">★★★★★</div></div>
+      <div class="press-item"><div class="press-pub">Bon Appétit</div><div class="press-stars">★★★★★</div></div>
+      <div class="press-item"><div class="press-pub">Eater London</div><div class="press-stars">★★★★★</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band reveal">
+    <h2 class="cta-title">Experience <em>Maison Noir</em></h2>
+    <p class="cta-text">Reservations are recommended well in advance. We look forward to welcoming you to our table.</p>
+    <a href="contact.html" class="btn-gold">Book Your Table</a>
+  </section>
+
+  <footer>
+    <div class="footer-logo">MAISON NOIR</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQs</a>
+      <a href="reviews.html">Reviews</a>
+    </div>
+    <p class="footer-copy">©️ 2025 Maison Noir. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+    function animateRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);}
+    animateRing();
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.12});
+    reveals.forEach(r=>obs.observe(r));
+  </script>
+</body>
+</html>
